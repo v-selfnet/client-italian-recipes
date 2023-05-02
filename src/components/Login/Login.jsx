@@ -1,30 +1,64 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../Context/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const { user, signIn } = useContext(AuthContext);
-    console.log(user);
+    const { signIn, googleLogin, githubLogin } = useContext(AuthContext);
 
+    const navigate = useNavigate();
+    const location = useLocation();
+    // console.log(location)
+
+    const [err, setErr] = useState([]);
+    const [success, setSuccess] = useState([]);
+
+    const from = location.state?.from?.pathname || '/';
+
+    // email password login
     const handelSignin = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+
+        setErr('');
+        setSuccess('');
 
         signIn(email, password)
             .then(result => {
-                const loggedUser = result.user;
-                console.log(loggedUser)
+                const loggedUser = result.user.email;
+                setSuccess('Login Success!', loggedUser)
                 form.reset();
+                navigate(from, { replace: true })
             })
             .catch(error => {
-                console.error(error.message)
+                setErr(error.message)
             })
 
-
     }
+
+    // google login
+    const handelGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                const googleUser = result.user;
+                console.log(googleUser)
+                navigate(from, { replace: true })
+            })
+            .catch(error => console.error(error.message))
+    }
+
+    // github login
+    const handelGithubLogin = () => {
+        githubLogin()
+            .then(result => {
+                const githubUser = result.user;
+                console.log(githubUser);
+                navigate(from, { replace: true })
+            })
+            .catch(error => console.error(error.message))
+    }
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col ">
@@ -42,6 +76,13 @@ const Login = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+
+                            {/* Error & Success Message Handel */}
+                            <label className="label">
+                                <span className="label-text text-red-500">{err}</span>
+                                <span className="label-text text-green-500">{success}</span>
+                            </label>
+
                             <div className='flex justify-between'>
                                 <label className="label">
                                     <p className="label-text-alt">Do not have an account?</p>
@@ -59,9 +100,9 @@ const Login = () => {
                         </label>
                         <hr />
                         <div className="form-control mt-6">
-                            <button className="btn btn-outline btn-xs">Signin with Google</button>
+                            <button onClick={handelGoogleLogin} className="btn btn-outline btn-xs">Signin with Google</button>
                         </div>
-                        <div className="form-control mt-6">
+                        <div onClick={handelGithubLogin} className="form-control mt-6">
                             <button className="btn btn-outline btn-xs">Signin with Github</button>
                         </div>
                     </form>

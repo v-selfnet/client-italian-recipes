@@ -1,10 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
 
 const Register = () => {
 
-    const { createUser } = useContext(AuthContext);
+    const { user, createUser } = useContext(AuthContext);
+
+    const [err, setErr] = useState([]);
+    const [success, setSuccess] = useState([]);
 
     const handelRegister = event => {
         event.preventDefault();
@@ -12,16 +15,19 @@ const Register = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, email, password)
+        // console.log(name, email, password)
 
+        setErr('');
+        setSuccess('');
+        
         createUser(email, password)
             .then(result => {
                 const newUser = result.user;
-                console.log(newUser)
+                setSuccess('User Create Success!')
                 form.reset();
             })
             .catch(error => {
-                console.error(error.message)
+                setErr(error.message)
             })
     }
 
@@ -46,6 +52,13 @@ const Register = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+
+                            {/* Error & Success Message Handel */}
+                            <label className="label">
+                                <span className="label-text text-red-500">{err}</span>
+                                <span className="label-text text-green-500">{success}</span>
+                            </label>
+
                             <div className='flex justify-between'>
                                 <label className="label">
                                     <p className="label-text-alt">Have an account?</p>
