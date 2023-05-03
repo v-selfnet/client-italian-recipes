@@ -21,12 +21,12 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/chefs')
+        loader: () => fetch('https://server-italian-recipes-v-selfnet.vercel.app/chefs')
       },
       {
         path: '/recipe/:id',
         element: <Recipe></Recipe>,
-        loader: ({params}) => fetch(`http://localhost:5000/chefs/${params.id}`)
+        loader: ({params}) => fetch(`https://server-italian-recipes-v-selfnet.vercel.app/chefs/${params.id}`)
       },
       {
         path: '/blog',
