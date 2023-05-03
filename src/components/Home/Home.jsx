@@ -1,8 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Chef from '../Chef/Chef';
-import LeftNav from '../LeftNav/LeftNav';
-import RightNav from '../RightNav/RightNav';
 
 const Home = () => {
     const chefs = useLoaderData()
