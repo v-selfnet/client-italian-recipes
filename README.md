@@ -1,11 +1,13 @@
-Markup : * Server Link [vercel]
-              * https://server-italian-recipes-v-selfnet.vercel.app/chefs
+Markup : Project Instruction
 
-          * Project Live Link [firebase]
-              * 
+        * Server Link [vercel]
+            * https://server-italian-recipes-v-selfnet.vercel.app/chefs
 
-          * server-italian-recipes [github]
-              * https://github.com/programming-hero-web-course-4/b7a10-chef-recipe-hunter-server-side-v-selfnet.git
+        * Project Live Link [firebase]
+            * 
 
-          * client-italian-recipes [github]
-              * https://github.com/programming-hero-web-course-4/b7a10-chef-recipe-hunter-client-side-v-selfnet.git
+         * server-italian-recipes [github]
+            * https://github.com/programming-hero-web-course-4/b7a10-chef-recipe-hunter-server-side-v-selfnet.git
+
+        * client-italian-recipes [github]
+            * https://github.com/programming-hero-web-course-4/b7a10-chef-recipe-hunter-client-side-v-selfnet.git
