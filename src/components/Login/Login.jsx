@@ -1,13 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../Context/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const { signIn, googleLogin, githubLogin } = useContext(AuthContext);
+    const { signIn, googleLogin, githubLogin, resetPassword } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
-    // console.log(location)
+
+    const emailRef = useRef();
 
     const [err, setErr] = useState([]);
     const [success, setSuccess] = useState([]);
@@ -21,8 +22,7 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        setErr('');
-        setSuccess('');
+        setErr(''); setSuccess('');
 
         signIn(email, password)
             .then(result => {
@@ -59,6 +59,21 @@ const Login = () => {
             .catch(error => console.error(error.message))
     }
 
+    // reset password
+    const handelResetPassword = () => {
+        const email = emailRef.current.value;
+        if(!email){
+            alert('Please input a valid email address')
+            return;
+        } 
+        
+        resetPassword(email)
+        .then(( )=> {
+            alert('Please Check Your Email')
+        })
+        .catch(error => setErr(error.message))
+    }
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col ">
@@ -71,7 +86,7 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+                            <input type="email" name="email" ref={emailRef} placeholder="email" className="input input-bordered" required />
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
@@ -95,13 +110,16 @@ const Login = () => {
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
                         </div>
+                        {/* reset password */}
                         <label className="label">
-                            <Link to="#" className="label-text-alt link link-hover">Forgot password?</Link>
+                            <Link onClick={handelResetPassword} to="#" className="label-text-alt link link-hover">Forgot password?</Link>
                         </label>
                         <hr />
+                        {/* google login */}
                         <div className="form-control mt-6">
                             <button onClick={handelGoogleLogin} className="btn btn-outline btn-xs">Signin with Google</button>
                         </div>
+                        {/* github login */}
                         <div onClick={handelGithubLogin} className="form-control mt-6">
                             <button className="btn btn-outline btn-xs">Signin with Github</button>
                         </div>

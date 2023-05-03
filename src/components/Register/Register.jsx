@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
 
@@ -15,20 +16,34 @@ const Register = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        // console.log(name, email, password)
+        const photo = form.photo.value;
 
         setErr('');
         setSuccess('');
-        
+
         createUser(email, password)
             .then(result => {
                 const newUser = result.user;
+                console.log(newUser);
                 setSuccess('User Create Success!')
                 form.reset();
+                updateUserData(newUser, name, photo) // call update profile function
             })
             .catch(error => {
                 setErr(error.message)
             })
+    }
+
+    // update user profile
+    const updateUserData = (user, name, photo) => {
+        updateProfile(user, {
+            displayName: name,
+            photoURL: photo
+        })
+        .then(() => {
+            setSuccess('Update success')
+        })
+        .catch(error => setErr(error.message))
     }
 
     return (
@@ -44,6 +59,7 @@ const Register = () => {
                                 <span className="label-text">Name</span>
                             </label>
                             <input type="text" name="name" placeholder="your name" className="input input-bordered" required />
+
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
@@ -52,6 +68,11 @@ const Register = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+
+                            <label className="label">
+                                <span className="label-text">Photo</span>
+                            </label>
+                            <input type="file" name="photo" className="input input-bordered file-input w-full" />
 
                             {/* Error & Success Message Handel */}
                             <label className="label">

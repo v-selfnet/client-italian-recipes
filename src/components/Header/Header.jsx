@@ -24,8 +24,8 @@ const Header = () => {
                 {
                     user ? 
                     <>
-                        <span>{user.displayName}</span>
-                        <img className="w-10 rounded-full ml-5" src={user.photoURL} />
+                        <span>{user.displayName ? user.displayName: user.email}</span>
+                        <img className="w-10 rounded-full ml-5 border bottom-2" src={user.photoURL ? user.photoURL: null}/>
                         <Link onClick={handelSignout} className="btn btn-ghost normal-case text-xl" to='/login'>Signout</Link>
                     </>:
                         <Link className="btn btn-ghost normal-case text-xl" to='/login'>Login</Link>
