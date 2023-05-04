@@ -15,7 +15,7 @@ const Recipe = () => {
     }
 
     return (
-        <div className="card bg-base-100 shadow-xl">
+        <div className="card bg-base-100 shadow-xl my-20">
            
            <FontAwesomeIcon icon={faBookmark} className="btn btn-success my-5" onClick={habdelButton} disabled={!disable}/>
 

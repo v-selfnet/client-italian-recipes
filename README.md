@@ -2,8 +2,9 @@ Markup : Project Instruction
 
         * Server Link [vercel]
             * https://server-italian-recipes-v-selfnet.vercel.app/chefs
+            * https://server-italian-recipes-v-selfnet.vercel.app/recipe/1
 
-        * Project Live Link [firebase]
+        * Client Live Link [firebase]
             * 
 
          * server-italian-recipes [github]

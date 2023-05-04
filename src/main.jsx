@@ -15,6 +15,10 @@ import Recipe from './components/Recipe/Recipe';
 import RecipeDetail from './components/RecipeDetail/RecipeDetail';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 
+
+
+// https://server-italian-recipes-v-selfnet.vercel.app 
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -23,13 +27,14 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        // loader: () => fetch('https://server-italian-recipes-v-selfnet.vercel.app/chefs')
-        loader: () => fetch('http://localhost:5000/chefs')
+        loader: () => fetch('https://server-italian-recipes-v-selfnet.vercel.app/chefs')
+        // loader: () => fetch('http://localhost:5000/chefs')
       },
       {
         path: '/recipe/:id',
         element: <PrivateRoute><Recipe></Recipe></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/recipe/${params.id}`)
+        loader: ({params}) => fetch(`https://server-italian-recipes-v-selfnet.vercel.app/recipe/${params.id}`)
+        // loader: ({params}) => fetch(`http://localhost:5000/recipe/${params.id}`)
       },
       {
         path: '/recipe-detail',
