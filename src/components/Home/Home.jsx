@@ -6,7 +6,7 @@ const Home = () => {
     const chefs = useLoaderData()
     return (
         <div>
-            <h3 className='text-4xl text-center font-semibold mb-20'>Total Chefs: {chefs.length}</h3>
+            <h3 className='text-4xl text-center font-semibold my-20'>Total Chefs: {chefs.length}</h3>
             <div className="carousel w-full mb-20 rounded-2xl">
                 <div id="slide1" className="carousel-item relative w-full">
                     <img src="https://images.unsplash.com/photo-1498579150354-977475b7ea0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" className="w-full" />

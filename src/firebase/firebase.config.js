@@ -1,12 +1,14 @@
 import { initializeApp } from "firebase/app";
 
+console.log('env:', import.meta.env.VITE_PASS);
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDwUYOIwXKlJZewEix1sixTW-zp6KjvMco",
-  authDomain: "italian-recipes-ac2fe.firebaseapp.com",
-  projectId: "italian-recipes-ac2fe",
-  storageBucket: "italian-recipes-ac2fe.appspot.com",
-  messagingSenderId: "309178708115",
-  appId: "1:309178708115:web:6a24f9dc7431c455cddd66"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID
 };
 
 const app = initializeApp(firebaseConfig);

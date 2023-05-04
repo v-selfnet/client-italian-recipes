@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Profile = () => {
     const {user} = useContext(AuthContext)
     return (
-        <div className='grid justify-items-center gap-10 my-10'>
+        <div className='grid justify-items-center gap-10 my-20'>
             {
                     user ? 
                     <>
