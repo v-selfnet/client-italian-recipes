@@ -12,6 +12,7 @@ import Register from './components/Register/Register.jsx';
 import AuthProvider from './components/Context/AuthProvider';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Recipe from './components/Recipe/Recipe';
+import RecipeDetail from './components/RecipeDetail/RecipeDetail';
 
 const router = createBrowserRouter([
   {
@@ -21,13 +22,25 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('https://server-italian-recipes-v-selfnet.vercel.app/chefs')
+        // loader: () => fetch('https://server-italian-recipes-v-selfnet.vercel.app/chefs')
+        loader: () => fetch('http://localhost:5000/chefs')
       },
       {
         path: '/recipe/:id',
         element: <Recipe></Recipe>,
-        loader: ({params}) => fetch(`https://server-italian-recipes-v-selfnet.vercel.app/chefs/${params.id}`)
+        loader: ({params}) => fetch(`http://localhost:5000/recipe/${params.id}`)
       },
+      {
+        path: ':id',
+        element: <RecipeDetail/>,
+      },
+
+      // {
+      //   path: '/recipe/:id',
+      //   element: <RecipeDetail/>,
+      //   loader: ({params}) => fetch(`https://server-italian-recipes-v-selfnet.vercel.app/chefs/${params.id}`)
+      // },
+
       {
         path: '/blog',
         element: <Blog></Blog>
