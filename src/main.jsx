@@ -13,6 +13,8 @@ import AuthProvider from './components/Context/AuthProvider';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Recipe from './components/Recipe/Recipe';
 import RecipeDetail from './components/RecipeDetail/RecipeDetail';
+import ErrorPage from './components/ErrorPage/ErrorPage';
+// import ErrorPage from './error-page';
 
 const router = createBrowserRouter([
   {
@@ -27,11 +29,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/recipe/:id',
-        element: <Recipe></Recipe>,
+        element: <PrivateRoute><Recipe></Recipe></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/recipe/${params.id}`)
       },
       {
-        path: ':id',
+        path: '/recipe-detail',
         element: <RecipeDetail/>,
       },
 
@@ -43,11 +45,13 @@ const router = createBrowserRouter([
 
       {
         path: '/blog',
-        element: <Blog></Blog>
+        element: <Blog></Blog>,
+        errorElement: <ErrorPage></ErrorPage>
       },
       {
         path: '/profile',
-        element: <PrivateRoute><Profile></Profile></PrivateRoute>
+        element: <PrivateRoute><Profile></Profile></PrivateRoute>,
+        errorElement: <ErrorPage></ErrorPage>
       },
       {
         path: '/login',

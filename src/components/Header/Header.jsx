@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
+import ActiveLink from '../ActiveLink/ActiveLink';
 
 const Header = () => {
     const {user, logOut} = useContext(AuthContext);
@@ -15,9 +16,15 @@ const Header = () => {
         <div className="navbar bg-base-300 justify-between">
             <Link className="btn btn-ghost normal-case text-xl" to='/'>Italian Recipe</Link>
             <div>
-                <Link className="btn btn-ghost normal-case text-xl" to='/'>Home</Link>
-                <Link className="btn btn-ghost normal-case text-xl" to='/blog'>Blog</Link>
-                <Link className="btn btn-ghost normal-case text-xl" to='/profile'>Profile</Link>
+                <Link className="btn btn-ghost normal-case text-xl">
+                    <ActiveLink to='/'>Home</ActiveLink>
+                </Link>
+                <Link className="btn btn-ghost normal-case text-xl">
+                    <ActiveLink to='/blog'>Blog</ActiveLink>
+                </Link>
+                <Link className="btn btn-ghost normal-case text-xl">
+                    <ActiveLink to='/profile'>Profile</ActiveLink>
+                </Link>
             </div>
             
             <div>

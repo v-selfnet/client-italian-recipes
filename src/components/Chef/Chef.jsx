@@ -12,9 +12,10 @@ const Chef = ({ chef }) => {
                 <h2 className="card-title">{name}</h2>
                 <p>Likes: {likes}</p>
                 <p>Experience: {experience} years</p>
+                <p>Total Recipes: {recipes} years</p>
                 <div className="card-actions justify-center">
                 <Link to={`/recipe/${id}`}>
-                    <button className="btn btn-primary my-3 w-full">View Recipes</button>
+                    <button className="btn btn-primary btn-wide my-3">View Recipes</button>
                 </Link>
                 </div>
             </div>

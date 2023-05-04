@@ -6,7 +6,7 @@ const Home = () => {
     const chefs = useLoaderData()
     return (
         <div>
-            <h3>Total Chefs: {chefs.length}</h3>
+            <h3 className='text-4xl text-center font-semibold my-20'>Total Chefs: {chefs.length}</h3>
            {
                 chefs.map(chef => <Chef
                     key={chef.id}
