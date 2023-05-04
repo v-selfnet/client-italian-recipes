@@ -5,7 +5,7 @@ Markup : Project Instruction
             * https://server-italian-recipes-v-selfnet.vercel.app/recipe/1
 
         * Client Live Link [firebase]
-            * 
+            * https://italian-recipes-ac2fe.web.app
 
          * server-italian-recipes [github]
             * https://github.com/programming-hero-web-course-4/b7a10-chef-recipe-hunter-server-side-v-selfnet.git

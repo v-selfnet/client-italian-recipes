@@ -14,12 +14,11 @@ const Main = () => {
                 <div className="col-span-3">
                     <LeftNav></LeftNav>
                 </div>
-                <div className="col-span-6">
+                <div className="col-span-1 lg:col-span-6">
                     <div className='text-center'>
                         {
                             navigation.state === 'loading' && <progress className="progress w-56"></progress>
                         }
-                        
                     </div>
                     <Outlet></Outlet>
                 </div>
