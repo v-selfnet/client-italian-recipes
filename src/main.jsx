@@ -14,7 +14,6 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Recipe from './components/Recipe/Recipe';
 import RecipeDetail from './components/RecipeDetail/RecipeDetail';
 import ErrorPage from './components/ErrorPage/ErrorPage';
-// import ErrorPage from './error-page';
 
 const router = createBrowserRouter([
   {
@@ -36,13 +35,6 @@ const router = createBrowserRouter([
         path: '/recipe-detail',
         element: <RecipeDetail/>,
       },
-
-      // {
-      //   path: '/recipe/:id',
-      //   element: <RecipeDetail/>,
-      //   loader: ({params}) => fetch(`https://server-italian-recipes-v-selfnet.vercel.app/chefs/${params.id}`)
-      // },
-
       {
         path: '/blog',
         element: <Blog></Blog>,
@@ -51,7 +43,6 @@ const router = createBrowserRouter([
       {
         path: '/profile',
         element: <PrivateRoute><Profile></Profile></PrivateRoute>,
-        errorElement: <ErrorPage></ErrorPage>
       },
       {
         path: '/login',
@@ -61,6 +52,10 @@ const router = createBrowserRouter([
         path: '/register',
         element: <Register></Register>
       },
+      {
+        path: '*',
+        element: <ErrorPage></ErrorPage>
+      }
     ]
   }
 
